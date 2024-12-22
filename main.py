@@ -38,7 +38,7 @@ def main():
         "Sec-Fetch-Site": "same-origin",
         "Sec-Fetch-Mode": "cors",
         "Sec-Fetch-Dest": "empty",
-        "Referer": "https://redstresser.org/hub",
+        "Referer": "https://redstresser.net/hub",
         "Accept-Encoding": "gzip, deflate, br",
         "Accept-Language": "en-US,en;q=0.9",
         "Priority": "u=1, i"
