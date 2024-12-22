@@ -57,7 +57,7 @@ def main():
                 slow_print(f"Error: {response.status_code}")
         except Exception as e:
             slow_print(f"Terjadi kesalahan: {e}")
-        time.sleep(10)  # Delay 100 detik sebelum request berikutnya
+        time.sleep(15)  # Delay 100 detik sebelum request berikutnya
 
 if __name__ == "__main__":
     main()
